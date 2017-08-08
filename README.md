@@ -3,7 +3,7 @@ A simple Pushbullet API client for CLI. Written in all BASH.
 
 Usage:
 <dl>
-  <dt>push [dmsukh] [push message]</dt>
+  <dt> [|] push [dmsukh] [push message]</dt>
   <dd>-d    Device to send to</dd>
   <dd>-m    Message to send</dd>
   <dd>-D    Displays Devices</dd>

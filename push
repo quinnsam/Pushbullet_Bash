@@ -38,7 +38,6 @@ do
         d) device=${OPTARG};;
         m) message=${OPTARG};;
         k) PUSHBULLET_KEY=${OPTARG};;
-        c) commandl;;
         D) dispDevice;;
         S) dispSubs;;
         U) dispUser;;
@@ -52,23 +51,7 @@ if [ -z $PUSHBULLET_KEY ]; then
     exit 1
 fi
 
-if [ $message ]; then
-    if [ device ]; then
-        curl --header "Access-Token: $PUSHBULLET_KEY" \
-            --header 'Content-Type: application/json' \
-            --data-binary "{\"device_iden\":\"$device\",\"body\":\"$message\",\"type\":\"note\"}" \
-            --request POST \
-            https://api.pushbullet.com/v2/pushes
-    else
-        curl --header "Access-Token: $PUSHBULLET_KEY" \
-            --header 'Content-Type: application/json' \
-            --data-binary "{\"body\":\"$message\",\"type\":\"note\"}" \
-            --request POST \
-            https://api.pushbullet.com/v2/pushes
-    fi
-else
-    read message
-    
+if [ message ]; then
     if [ device ]; then
         curl --header "Access-Token: $PUSHBULLET_KEY" \
             --header 'Content-Type: application/json' \
@@ -83,3 +66,4 @@ else
             https://api.pushbullet.com/v2/pushes
     fi
 fi
+
